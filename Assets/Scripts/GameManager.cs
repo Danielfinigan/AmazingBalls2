@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	public GameState currentGameState = GameState.start;
 
 	public GameObject StartScreen;
+	public GameObject GameOverScreen;
 
 	public void Awake () {
 		Instance = this;
@@ -33,14 +34,19 @@ public class GameManager : MonoBehaviour {
 	void SetGameState (GameState newGameState) {
 		if (newGameState == GameState.start) {
 			StartScreen.SetActive(true);
+			GameOverScreen.SetActive(false);
 		} else if (newGameState == GameState.inGame) {
 			StartScreen.SetActive (false);
+			GameOverScreen.SetActive(false);
 		} else if (newGameState == GameState.levelComplete) {
 			StartScreen.SetActive (false);
+			GameOverScreen.SetActive(false);
 		} else if (newGameState == GameState.gameOver) {
 			StartScreen.SetActive (false);
+			GameOverScreen.SetActive(true);
 		} else if (newGameState == GameState.youWin) {
 			StartScreen.SetActive (false);
+			GameOverScreen.SetActive(false);
 		}
 		currentGameState = newGameState;
 	}
