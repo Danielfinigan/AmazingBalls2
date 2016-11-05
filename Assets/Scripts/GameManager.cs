@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject StartScreen;
 	public GameObject GameOverScreen;
+	public GameObject YouWonScreen;
 
 	public void Awake () {
 		Instance = this;
@@ -29,6 +30,10 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver() {
 		SetGameState (GameState.gameOver);
+	}
+
+	public void YouWon() {
+		SetGameState (GameState.youWin);
 	}
 
 	public void RestartLevel() {
@@ -43,18 +48,23 @@ public class GameManager : MonoBehaviour {
 		if (newGameState == GameState.start) {
 			StartScreen.SetActive(true);
 			GameOverScreen.SetActive(false);
+			YouWonScreen.SetActive (false);
 		} else if (newGameState == GameState.inGame) {
 			StartScreen.SetActive (false);
 			GameOverScreen.SetActive(false);
+			YouWonScreen.SetActive (false);
 		} else if (newGameState == GameState.levelComplete) {
 			StartScreen.SetActive (false);
 			GameOverScreen.SetActive(false);
+			YouWonScreen.SetActive (false);
 		} else if (newGameState == GameState.gameOver) {
 			StartScreen.SetActive (false);
 			GameOverScreen.SetActive(true);
+			YouWonScreen.SetActive (false);
 		} else if (newGameState == GameState.youWin) {
 			StartScreen.SetActive (false);
 			GameOverScreen.SetActive(false);
+			YouWonScreen.SetActive (true);
 		}
 		currentGameState = newGameState;
 	}
