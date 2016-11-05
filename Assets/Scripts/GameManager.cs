@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour {
 		SetGameState (GameState.inGame);
 	}
 
+	public void GameOver() {
+		SetGameState (GameState.gameOver);
+	}
+
 	void SetGameState (GameState newGameState) {
 		if (newGameState == GameState.start) {
 			StartScreen.SetActive(true);
