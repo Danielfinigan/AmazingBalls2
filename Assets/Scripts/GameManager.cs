@@ -31,6 +31,14 @@ public class GameManager : MonoBehaviour {
 		SetGameState (GameState.gameOver);
 	}
 
+	public void RestartLevel() {
+		Application.LoadLevel (Application.loadedLevel);
+	}
+
+	public void RestartGame () {
+		Application.LoadLevel ("Level1");
+	}
+
 	void SetGameState (GameState newGameState) {
 		if (newGameState == GameState.start) {
 			StartScreen.SetActive(true);
