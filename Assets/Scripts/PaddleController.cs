@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class PaddleController : MonoBehaviour {
-	public float speed = 30;
+	//public float speed = 30;
 
 	void FixedUpdate () {
-		float v = Input.GetAxisRaw("Horizontal");
-		GetComponent<Rigidbody>().velocity = new Vector3(v,0,0) * speed;
+		Vector2 mousePosition = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, -20);
+		this.transform.position = mousePosition;
 	}
 }
