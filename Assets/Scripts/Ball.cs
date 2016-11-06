@@ -9,4 +9,7 @@ public class Ball : MonoBehaviour {
 	public void Awake () {
 		Instance = this;
 	}
+	public void start() {
+		rb.velocity = new Vector3(0, -1) * 5;
+	}
 }
