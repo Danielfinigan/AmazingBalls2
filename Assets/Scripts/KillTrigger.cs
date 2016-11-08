@@ -3,12 +3,14 @@ using System.Collections;
 
 public class KillTrigger : MonoBehaviour {
 
-	void OnTriggerEnter (Collider other)
+	void OnTriggerEnter2D (Collider2D other)
 	{
-		if (other.tag == "Ball")
+        Debug.Log("Killed");
+        if (other.tag == "Ball")
 		{
+            Debug.Log("Ball tag");
 			GameManager.Instance.GameOver();
-			Ball.Instance.rb.constraints = RigidbodyConstraints.FreezePosition;
+			Ball2.Instance.rb.constraints = RigidbodyConstraints2D.FreezePosition;
 			Debug.Log("Freeze Constraints");
 		}
 	}

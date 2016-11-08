@@ -4,14 +4,16 @@ using System.Collections;
 public class Ball2 : MonoBehaviour {
 	public static Ball2 Instance;
 	public float speed = 10f;
-	public void Awake () {
-		Instance = this;
-	}
+    public Rigidbody2D rb;
 
+    void Awake()
+    {
+
+        Instance = this;
+    }
 	// Use this for initialization
-	void Start () {
+	public void StartGame () {
 		GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
-
 	}
 
 	float hitFactor(Vector2 ballPos, Vector2 hitPos,
