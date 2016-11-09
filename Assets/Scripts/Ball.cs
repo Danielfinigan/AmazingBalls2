@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Ball : MonoBehaviour {
 	public static Ball Instance;
@@ -38,10 +39,11 @@ public class Ball : MonoBehaviour {
 		if ( col.gameObject.tag == "Brick" ) {
 			BrickGenerator.Instance.DeleteBrick(col);
 
-
-			Vector3 newSpawnPosition = new Vector3 (Ball.Instance.transform.position.x, Ball.Instance.transform.position.y,0);
-			Instantiate(pUp, newSpawnPosition, Quaternion.identity);
-			Debug.Log (newSpawnPosition.ToString ());
+			int rnd = Random.Range (0, 5);
+			if (rnd == 0) {
+				Vector3 newSpawnPosition = new Vector3 (Ball.Instance.transform.position.x, Ball.Instance.transform.position.y, 0);
+				Instantiate (pUp, newSpawnPosition, Quaternion.identity);
+			}
 		}
 	}	
 }
