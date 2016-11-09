@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class PowerUps : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	    
-	}
-	
+public class PowerUps : MonoBehaviour {	
 	// Update is called once per frame
 	void Update () {
         GetComponent<Rigidbody2D>().velocity = Vector2.down * 10f;
@@ -17,7 +12,11 @@ public class PowerUps : MonoBehaviour {
     {
         if(paddle.tag == "paddle")
         {
-            BiggerBall();
+			int rnd = Random.Range(0, 0);
+			if (rnd == 0) {
+				BiggerBall();
+			}
+
         }
     }
     public void BiggerBall()

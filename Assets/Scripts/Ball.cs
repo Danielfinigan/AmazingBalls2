@@ -5,10 +5,10 @@ public class Ball : MonoBehaviour {
 	public static Ball Instance;
 	public float speed = 10f;
     public Rigidbody2D rb;
+	public GameObject pUp;
 
     void Awake()
     {
-
         Instance = this;
     }
 	// Use this for initialization
@@ -37,6 +37,11 @@ public class Ball : MonoBehaviour {
 		}
 		if ( col.gameObject.tag == "Brick" ) {
 			BrickGenerator.Instance.DeleteBrick(col);
+
+
+			Vector3 newSpawnPosition = new Vector3 (Ball.Instance.transform.position.x, Ball.Instance.transform.position.y,0);
+			Instantiate(pUp, newSpawnPosition, Quaternion.identity);
+			Debug.Log (newSpawnPosition.ToString ());
 		}
 	}	
 }
