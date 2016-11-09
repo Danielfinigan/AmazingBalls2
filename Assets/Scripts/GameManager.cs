@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 
 	public void StartGame() {
 		SetGameState (GameState.inGame);
-        Ball2.Instance.StartGame();
+        Ball.Instance.StartGame();
 	}
 
 	public void GameOver() {

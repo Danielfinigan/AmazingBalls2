@@ -29,11 +29,21 @@ public class BrickGenerator : MonoBehaviour {
         _brickPicker = (_brickPicker + 1) % 3;
     }
 
+    public void DeleteBrick(Collision2D brick)
+    {
+        bricks.Remove(bricks[0]);
+        Destroy(brick.gameObject);
+        Debug.Log("Bricks Left: " + bricks.Count);
+        if (bricks.Count == 0)
+            GameManager.Instance.YouWon();
+    }
+
     public void buildLevel()
     {
-        for(int y = -1; y < 26; y += 2)
+        //y = 2 : 14    x = -40 : 40
+        for(int y = 2; y < 3; y += 2)
         {
-            for (int x = -40; x < 41; x += 5)
+            for (int x = -5; x < 6; x += 5)
             {
                 AddBrick(x, y);
             }
