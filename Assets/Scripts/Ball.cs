@@ -20,9 +20,6 @@ public class Ball : MonoBehaviour {
 		float paddlePos) {
 		return (ballPos.x - hitPos.x) / paddlePos;
 	}
-	// Update is called once per frame
-	void Update () {
-	}
 
 	void OnCollisionEnter2D(Collision2D col) {
 
