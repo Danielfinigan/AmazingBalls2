@@ -41,6 +41,7 @@ public class PowerUps : MonoBehaviour {
     {
         _whichPowerUp = "Bigger Ball!";
         Ball.Instance.transform.localScale = new Vector3(30f, 30f, 1f);
+        StartCoroutine(ResetBall());
     }
 
     public void TimeSaver()
@@ -51,7 +52,10 @@ public class PowerUps : MonoBehaviour {
 
     IEnumerator ResetBall()
     {
+        Debug.Log("Resetting");
         Ball.Instance.transform.localScale = new Vector3(10f, 10f, 1f);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(2f);
+        Ball.Instance.transform.localScale = new Vector3(10f, 10f, 1f);
+        Debug.Log("Reset");
     }
 }
