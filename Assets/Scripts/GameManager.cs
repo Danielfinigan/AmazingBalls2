@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
 	public void YouWon() {
 		SetGameState (GameState.youWin);
         _timeStarted = false;
+        Destroy(Ball.Instance.gameObject);
 	}
 
 	public void RestartLevel()

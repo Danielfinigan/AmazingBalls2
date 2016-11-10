@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,7 +20,6 @@ public class PowerUps : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D paddle)
     {
-        Debug.Log("Collsion");
         if(paddle.tag == "Paddle")
         {
 			AudioSource powerup = GetComponent<AudioSource> ();
@@ -33,9 +31,7 @@ public class PowerUps : MonoBehaviour {
 			}
             powerUpText = ("Power Up: " + _whichPowerUp);
             gotPowerUp = true;
-           // this.SpriteRenderer.enabled = false;
             this.GetComponent<SpriteRenderer>().enabled = false;
-            //Destroy(PowerUps.instance.gameObject, powerup.clip.length);
         }
     }
     public void BiggerBall()
