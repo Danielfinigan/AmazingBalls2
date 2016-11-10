@@ -22,11 +22,13 @@ public class Ball : MonoBehaviour {
 		return (ballPos.x - hitPos.x) / paddlePos;
 	}
 
-	void OnCollisionEnter2D(Collision2D col) {
-
-		if (col.gameObject.name == "Paddle") {
-			// Calculate hit Factor
-			float x = hitFactor (transform.position,
+	void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.name == "Paddle") {
+            AudioSource ballHit = GetComponent<AudioSource>();
+            ballHit.Play();
+            // Calculate hit Factor
+            float x = hitFactor (transform.position,
 				          col.transform.position,
 				          col.collider.bounds.size.x) * 2f;
 
@@ -39,7 +41,9 @@ public class Ball : MonoBehaviour {
 
         //Spawns a powerUp
 		if ( col.gameObject.tag == "Brick" ) {
-			BrickGenerator.Instance.DeleteBrick(col);
+            AudioSource ballHit = GetComponent<AudioSource>();
+            ballHit.Play();
+            BrickGenerator.Instance.DeleteBrick(col);
 
 			int rnd = Random.Range (0, 0);
             if (rnd == 0 && PowerUps.instance == null) {
