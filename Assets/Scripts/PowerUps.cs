@@ -26,10 +26,15 @@ public class PowerUps : MonoBehaviour {
 			AudioSource powerup = GetComponent<AudioSource> ();
 			powerup.Play ();
 
-            int rnd = Random.Range(0, 0);
-			if (rnd == 0) {
-				BiggerBall();
+            int rnd = Random.Range(0, 4);
+			if (rnd == 0)
+            {
+				TimeSaver();
 			}
+            else if (rnd > 0)
+            {
+                BiggerBall();
+            }
             powerUpText = ("Power Up: " + _whichPowerUp);
             gotPowerUp = true;
 
@@ -40,6 +45,7 @@ public class PowerUps : MonoBehaviour {
     public void BiggerBall()
     {
         _whichPowerUp = "Bigger Ball!";
+        //BrickGenerator.Instance.BreakthroughBricks();
         Ball.Instance.transform.localScale = new Vector3(30f, 30f, 1f);
         Ball.Instance.ResetBall();
     }
@@ -49,4 +55,14 @@ public class PowerUps : MonoBehaviour {
         _whichPowerUp = "Time Saver!";
         GameManager.Instance.timer -= 10;
     }
+    
+    //spawns a second ball
+    /*public void AmazingBalls()
+    {
+        _whichPowerUp = "AMAZING BALLS!!";
+        Ball.Instance2.enabled = true;
+        Vector3 spawnposition = new Vector3(Ball.Instance.transform.position.x, Ball.Instance.transform.position.y, 0);
+        Ball.Instance2.transform.position = spawnposition;
+        Ball.Instance2.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10;
+    }*/
 }

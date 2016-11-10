@@ -4,10 +4,15 @@ using System.Collections.Generic;
 
 public class Ball : MonoBehaviour {
 	public static Ball Instance;
+    //public static Ball Instance2;
 	public float speed = 10f;
     public Rigidbody2D rb;
 	public GameObject pUp;
 
+    public Ball()
+    {
+
+    }
     void Awake()
     {
         Instance = this;
@@ -45,7 +50,7 @@ public class Ball : MonoBehaviour {
             ballHit.Play();
             BrickGenerator.Instance.DeleteBrick(col);
 
-			int rnd = Random.Range (0, 0);
+			int rnd = Random.Range (0, 4);
             if (rnd == 0 && PowerUps.instance == null) {
 				Vector3 newSpawnPosition = new Vector3 (Ball.Instance.transform.position.x, Ball.Instance.transform.position.y, 0);
 				Instantiate (pUp, newSpawnPosition, Quaternion.identity);
@@ -59,10 +64,8 @@ public class Ball : MonoBehaviour {
     }
     public IEnumerator Resetb()
     {
-        Debug.Log("Before wait");
         yield return new WaitForSeconds(20f);
         this.transform.localScale = new Vector3(10f, 10f, 1f);
-        Debug.Log("After wait");
     }
 }
 

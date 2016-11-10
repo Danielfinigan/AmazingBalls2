@@ -3,13 +3,11 @@ using System.Collections;
 
 public class Brick : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Ball")
+        {
+            BrickGenerator.Instance.DeleteBrick(this.GetComponent<Collision2D>());
+        }
+    }
 }

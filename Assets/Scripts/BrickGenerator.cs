@@ -40,12 +40,23 @@ public class BrickGenerator : MonoBehaviour {
     public void buildLevel()
     {
         //y = 2 : 14    x = -40 : 40
-        for(int y = 2; y < 3; y += 2)
+        for(int y = 2; y <= 10; y += 2)
         {
-            for (int x = -15; x < 16; x += 5)
+            for (int x = -40; x <= 40; x += 5)
             {
                 AddBrick(x, y);
             }
+        }
+    }
+
+    //have ball go through bricks while still destroying them
+    //for bigger ball or fireball power
+    public void BreakthroughBricks()
+    {
+        Debug.Log("Breakthrough");
+        for(int i = 0; i < bricks.Count; i++)
+        {
+            bricks[i].GetComponent<Collider2D>().isTrigger = true; 
         }
     }
 }
