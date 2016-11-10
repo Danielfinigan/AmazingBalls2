@@ -15,10 +15,13 @@ public class ViewInGame : MonoBehaviour {
             timerLabel.text = ("Score: " + GameManager.Instance.seconds);
         }
 
-        if (PowerUps.instance != null)
+        //check that power up exists
+        if(PowerUps.instance != null)
         {
-            if(PowerUps.instance.isPowerUp)
+            //check that player got the power up
+            if (PowerUps.instance.gotPowerUp)
             {
+                Debug.Log("got power up");
                 powerUpLabel.text = PowerUps.instance.powerUpText;
                 StartCoroutine(Fade(powerUpLabel.text));
             }
@@ -27,8 +30,8 @@ public class ViewInGame : MonoBehaviour {
 
     IEnumerator Fade(string text)
     {        
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         powerUpLabel.text = "";
-        PowerUps.instance.isPowerUp = false;
+        PowerUps.instance.gotPowerUp = false;
     }
 }

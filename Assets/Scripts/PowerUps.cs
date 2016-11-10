@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class PowerUps : MonoBehaviour {
 
     public static PowerUps instance;
-    public bool isPowerUp = false;
+    public bool gotPowerUp = false;
     public string powerUpText;
     private string _whichPowerUp = "";
 
@@ -21,20 +21,21 @@ public class PowerUps : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D paddle)
     {
-        if(paddle.tag == "paddle")
+        Debug.Log("Collsion");
+        if(paddle.tag == "Paddle")
         {
 			AudioSource powerup = GetComponent<AudioSource> ();
 			powerup.Play ();
-
-            Destroy(this.gameObject);
 
             int rnd = Random.Range(0, 0);
 			if (rnd == 0) {
 				TimeSaver();
 			}
             powerUpText = ("Power Up: " + _whichPowerUp);
-            isPowerUp = true;
-
+            gotPowerUp = true;
+           // this.SpriteRenderer.enabled = false;
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            //Destroy(PowerUps.instance.gameObject, powerup.clip.length);
         }
     }
     public void BiggerBall()

@@ -10,5 +10,10 @@ public class KillTrigger : MonoBehaviour {
 			GameManager.Instance.GameOver();
 			Ball.Instance.rb.constraints = RigidbodyConstraints2D.FreezePosition;
 		}
-	}
+
+        if (GameManager.Instance.currentGameState == GameState.inGame && other.tag == "PowerUp")
+        {
+            Destroy(PowerUps.instance.gameObject);
+        }
+    }
 }
