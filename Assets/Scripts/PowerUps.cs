@@ -12,6 +12,8 @@ public class PowerUps : MonoBehaviour {
     {
         if(paddle.tag == "paddle")
         {
+			AudioSource powerup = GetComponent<AudioSource> ();
+			powerup.Play ();
 			int rnd = Random.Range(0, 0);
 			if (rnd == 0) {
 				BiggerBall();
