@@ -5,14 +5,18 @@ using System.Collections.Generic;
 
 public class PowerUps : MonoBehaviour {
 
-    private string _powerUpText = "";
-    //public Text powerUp; 
+    public static PowerUps instance;
+    public bool isPowerUp = false;
+    public string powerUpText;
+    private string _whichPowerUp = "";
 
+    void Awake()
+    {
+        instance = this;
+    }
 	// Update is called once per frame    
 	void Update () {
         GetComponent<Rigidbody2D>().velocity = Vector2.down * 10f;
-
-        //powerUp.text = ("Power Up: " + powerUpText);
     }
 
     void OnTriggerEnter2D(Collider2D paddle)
@@ -21,24 +25,28 @@ public class PowerUps : MonoBehaviour {
         {
 			AudioSource powerup = GetComponent<AudioSource> ();
 			powerup.Play ();
+
             Destroy(this.gameObject);
+
             int rnd = Random.Range(0, 0);
 			if (rnd == 0) {
 				TimeSaver();
 			}
+            powerUpText = ("Power Up: " + _whichPowerUp);
+            isPowerUp = true;
 
         }
     }
     public void BiggerBall()
     {
-        _powerUpText = "Bigger Ball!";
+        _whichPowerUp = "Bigger Ball!";
         Ball.Instance.transform.localScale = new Vector3(30f, 30f, 1f);
         Destroy(this.gameObject);
     }
 
     public void TimeSaver()
     {
-        _powerUpText = "Time Saver!";
+        _whichPowerUp = "Time Saver!";
         GameManager.Instance.timer -= 10;
     }
 }

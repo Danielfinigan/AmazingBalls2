@@ -42,7 +42,7 @@ public class BrickGenerator : MonoBehaviour {
         //y = 2 : 14    x = -40 : 40
         for(int y = 2; y < 3; y += 2)
         {
-            for (int x = -5; x < 6; x += 5)
+            for (int x = -15; x < 16; x += 5)
             {
                 AddBrick(x, y);
             }

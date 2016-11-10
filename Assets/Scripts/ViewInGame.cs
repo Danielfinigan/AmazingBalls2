@@ -5,6 +5,8 @@ using System.Collections;
 public class ViewInGame : MonoBehaviour {
     
     public Text timerLabel;
+    public Text powerUpLabel;
+    public Image im;
 
     void Update()
     {
@@ -12,6 +14,21 @@ public class ViewInGame : MonoBehaviour {
         {            
             timerLabel.text = ("Score: " + GameManager.Instance.seconds);
         }
-        //Power Up text controlled from PowerUps.cs
+
+        if (PowerUps.instance != null)
+        {
+            if(PowerUps.instance.isPowerUp)
+            {
+                powerUpLabel.text = PowerUps.instance.powerUpText;
+                StartCoroutine(Fade(powerUpLabel.text));
+            }
+        }
+    }
+
+    IEnumerator Fade(string text)
+    {        
+        yield return new WaitForSeconds(3f);
+        powerUpLabel.text = "";
+        PowerUps.instance.isPowerUp = false;
     }
 }
