@@ -8,6 +8,7 @@ public class PowerUps : MonoBehaviour {
     public bool gotPowerUp = false;
     public string powerUpText;
     private string _whichPowerUp = "";
+    private IEnumerator coroutine;
 
     void Awake()
     {
@@ -40,22 +41,12 @@ public class PowerUps : MonoBehaviour {
     {
         _whichPowerUp = "Bigger Ball!";
         Ball.Instance.transform.localScale = new Vector3(30f, 30f, 1f);
-        StartCoroutine(ResetBall());
+        Ball.Instance.ResetBall();
     }
 
     public void TimeSaver()
     {
         _whichPowerUp = "Time Saver!";
         GameManager.Instance.timer -= 10;
-    }
-
-    IEnumerator ResetBall()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(2f);
-            Debug.Log("Reset");
-            Ball.Instance.transform.localScale = new Vector3(10f, 10f, 1f);
-        }
     }
 }

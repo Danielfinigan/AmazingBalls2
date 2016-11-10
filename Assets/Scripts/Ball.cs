@@ -51,7 +51,19 @@ public class Ball : MonoBehaviour {
 				Instantiate (pUp, newSpawnPosition, Quaternion.identity);
 			}
 		}
-	}	
+	}
+
+    public void ResetBall()
+    {
+        StartCoroutine(Resetb());
+    }
+    public IEnumerator Resetb()
+    {
+        Debug.Log("Before wait");
+        yield return new WaitForSeconds(20f);
+        this.transform.localScale = new Vector3(10f, 10f, 1f);
+        Debug.Log("After wait");
+    }
 }
 
 
