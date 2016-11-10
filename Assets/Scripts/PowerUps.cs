@@ -52,10 +52,11 @@ public class PowerUps : MonoBehaviour {
 
     IEnumerator ResetBall()
     {
-        Debug.Log("Resetting");
-        Ball.Instance.transform.localScale = new Vector3(10f, 10f, 1f);
-        yield return new WaitForSeconds(2f);
-        Ball.Instance.transform.localScale = new Vector3(10f, 10f, 1f);
-        Debug.Log("Reset");
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            Debug.Log("Reset");
+            Ball.Instance.transform.localScale = new Vector3(10f, 10f, 1f);
+        }
     }
 }
