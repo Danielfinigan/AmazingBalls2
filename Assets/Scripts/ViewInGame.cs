@@ -21,8 +21,8 @@ public class ViewInGame : MonoBehaviour {
             //check that player got the power up
             if (PowerUps.instance.gotPowerUp)
             {
-                Debug.Log("got power up");
                 powerUpLabel.text = PowerUps.instance.powerUpText;
+                //Have text pop up for 2 seconds the dissappear
                 StartCoroutine(Fade(powerUpLabel.text));
             }
         }

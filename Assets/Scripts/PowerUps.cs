@@ -21,7 +21,6 @@ public class PowerUps : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D paddle)
     {
-        Debug.Log("Collsion");
         if(paddle.tag == "Paddle")
         {
 			AudioSource powerup = GetComponent<AudioSource> ();
@@ -29,25 +28,30 @@ public class PowerUps : MonoBehaviour {
 
             int rnd = Random.Range(0, 0);
 			if (rnd == 0) {
-				TimeSaver();
+				BiggerBall();
 			}
             powerUpText = ("Power Up: " + _whichPowerUp);
             gotPowerUp = true;
-           // this.SpriteRenderer.enabled = false;
+
+            //Disables the sprite, object is destroyed in KillTrigger.cs
             this.GetComponent<SpriteRenderer>().enabled = false;
-            //Destroy(PowerUps.instance.gameObject, powerup.clip.length);
         }
     }
     public void BiggerBall()
     {
         _whichPowerUp = "Bigger Ball!";
         Ball.Instance.transform.localScale = new Vector3(30f, 30f, 1f);
-        Destroy(this.gameObject);
     }
 
     public void TimeSaver()
     {
         _whichPowerUp = "Time Saver!";
         GameManager.Instance.timer -= 10;
+    }
+
+    IEnumerator ResetBall()
+    {
+        Ball.Instance.transform.localScale = new Vector3(10f, 10f, 1f);
+        yield return new WaitForSeconds(10f);
     }
 }
