@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -17,8 +18,13 @@ public class GameManager : MonoBehaviour {
 	public GameState currentGameState = GameState.start;
 
 	public GameObject StartScreen;
-	public GameObject GameOverScreen;
+    public GameObject InGameScreen;
+    public GameObject GameOverScreen;
 	public GameObject YouWonScreen;
+
+    public float timer;
+    public string seconds;
+    public bool _timeStarted = false;
 
 	public void Awake () {
 		Instance = this;
@@ -27,51 +33,65 @@ public class GameManager : MonoBehaviour {
 	public void StartGame() {
 		SetGameState (GameState.inGame);
         Ball.Instance.StartGame();
+        _timeStarted = true;
 	}
 
 	public void GameOver() {
 		SetGameState (GameState.gameOver);
-	}
+        _timeStarted = false;
+    }
 
 	public void YouWon() {
 		SetGameState (GameState.youWin);
+        _timeStarted = false;
 	}
 
-	public void RestartLevel() {
-		Application.LoadLevel (Application.loadedLevel);
-	}
+	public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
-	public void RestartGame () {
-		Application.LoadLevel ("Level1");
-	}
+	public void RestartGame ()
+    {
+        SceneManager.LoadScene("Level1");
+    }
 
 	void SetGameState (GameState newGameState) {
 		if (newGameState == GameState.start) {
 			StartScreen.SetActive(true);
+            InGameScreen.SetActive(false);
 			GameOverScreen.SetActive(false);
 			YouWonScreen.SetActive (false);
 		} else if (newGameState == GameState.inGame) {
 			StartScreen.SetActive (false);
-			GameOverScreen.SetActive(false);
+            InGameScreen.SetActive(true);
+            GameOverScreen.SetActive(false);
 			YouWonScreen.SetActive (false);
 		} else if (newGameState == GameState.levelComplete) {
 			StartScreen.SetActive (false);
-			GameOverScreen.SetActive(false);
+            InGameScreen.SetActive(false);
+            GameOverScreen.SetActive(false);
 			YouWonScreen.SetActive (false);
 		} else if (newGameState == GameState.gameOver) {
 			StartScreen.SetActive (false);
-			GameOverScreen.SetActive(true);
+            InGameScreen.SetActive(false);
+            GameOverScreen.SetActive(true);
 			YouWonScreen.SetActive (false);
 		} else if (newGameState == GameState.youWin) {
 			StartScreen.SetActive (false);
-			GameOverScreen.SetActive(false);
+            InGameScreen.SetActive(false);
+            GameOverScreen.SetActive(false);
 			YouWonScreen.SetActive (true);
 		}
 		currentGameState = newGameState;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    void Update()
+    {
+        if (_timeStarted == true)
+        {
+            timer += Time.deltaTime;
+            seconds = (timer).ToString("0000");
+        }
+    }
 }

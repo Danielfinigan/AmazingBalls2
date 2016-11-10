@@ -36,10 +36,12 @@ public class Ball : MonoBehaviour {
 			// Set Velocity with dir * speed
 			GetComponent<Rigidbody2D> ().velocity = dir * speed;
 		}
+
+        //Spawns a powerUp
 		if ( col.gameObject.tag == "Brick" ) {
 			BrickGenerator.Instance.DeleteBrick(col);
 
-			int rnd = Random.Range (0, 4);
+			int rnd = Random.Range (0, 0);
 			if (rnd == 0) {
 				Vector3 newSpawnPosition = new Vector3 (Ball.Instance.transform.position.x, Ball.Instance.transform.position.y, 0);
 				Instantiate (pUp, newSpawnPosition, Quaternion.identity);
