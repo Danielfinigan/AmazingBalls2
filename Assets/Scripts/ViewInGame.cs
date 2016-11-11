@@ -6,7 +6,7 @@ public class ViewInGame : MonoBehaviour {
     
     public Text timerLabel;
     public Text powerUpLabel;
-    public Image im;
+    public Text biggerBallTimeRemaining;
 
     void Update()
     {
@@ -25,6 +25,15 @@ public class ViewInGame : MonoBehaviour {
                 //Have text pop up for 2 seconds the dissappear
                 StartCoroutine(Fade(powerUpLabel.text));
             }
+        }
+
+        if (Ball.Instance.isBiggerBall)
+        {
+            biggerBallTimeRemaining.text = ("Bigger Ball: " + Ball.Instance.biggerBallTime.ToString());
+        }
+        else
+        {
+            biggerBallTimeRemaining.text = "";
         }
     }
 

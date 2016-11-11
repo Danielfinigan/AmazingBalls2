@@ -6,6 +6,8 @@ public class Ball : MonoBehaviour {
 	public static Ball Instance;
     //public static Ball Instance2;
 	public float speed = 10f;
+    public bool isBiggerBall;
+    public int biggerBallTime;
     public Rigidbody2D rb;
 	public GameObject pUp;
 
@@ -19,7 +21,7 @@ public class Ball : MonoBehaviour {
     }
 	// Use this for initialization
 	public void StartGame () {
-		GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
+		GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
 	}
 
 	float hitFactor(Vector2 ballPos, Vector2 hitPos,
@@ -64,8 +66,13 @@ public class Ball : MonoBehaviour {
     }
     public IEnumerator Resetb()
     {
-        yield return new WaitForSeconds(20f);
+        for(int i = 10; i > 0; i--)
+        {
+            biggerBallTime = i;
+            yield return new WaitForSeconds(1f);
+        }
         this.transform.localScale = new Vector3(10f, 10f, 1f);
+        isBiggerBall = false;
     }
 }
 

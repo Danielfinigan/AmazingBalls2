@@ -39,10 +39,30 @@ public class BrickGenerator : MonoBehaviour {
 
     public void buildLevel()
     {
+        int horizontalBricks = 25;
+        int veritcalBricks = 8;
         //y = 2 : 14    x = -40 : 40
-        for(int y = 2; y <= 10; y += 2)
+        for(int y = 0; y <= veritcalBricks; y += 2)
         {
-            for (int x = -40; x <= 40; x += 5)
+            if (y < 5)
+                horizontalBricks += 5;
+            else
+                horizontalBricks -= 5;
+            for (int x = -horizontalBricks; x <= horizontalBricks; x += 5)
+            {
+                AddBrick(x, y);
+            }
+        }
+
+        horizontalBricks = 25;
+        veritcalBricks = 24;
+        for (int y = 16; y <= veritcalBricks; y += 2)
+        {
+            if (y < 5)
+                horizontalBricks += 5;
+            else
+                horizontalBricks -= 5;
+            for (int x = -horizontalBricks; x <= horizontalBricks; x += 5)
             {
                 AddBrick(x, y);
             }

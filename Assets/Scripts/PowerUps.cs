@@ -44,9 +44,10 @@ public class PowerUps : MonoBehaviour {
     }
     public void BiggerBall()
     {
-        _whichPowerUp = "Bigger Ball!";
+        _whichPowerUp = "Amazing Ball!";
         //BrickGenerator.Instance.BreakthroughBricks();
         Ball.Instance.transform.localScale = new Vector3(30f, 30f, 1f);
+        Ball.Instance.isBiggerBall = true;
         Ball.Instance.ResetBall();
     }
 
