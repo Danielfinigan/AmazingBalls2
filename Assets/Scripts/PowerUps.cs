@@ -28,13 +28,18 @@ public class PowerUps : MonoBehaviour {
 
             int rnd = Random.Range(0, 4);
 			if (rnd == 0) {
-				TimeSaver ();
+				//TimeSaver ();
+				//BiggerPaddle();
+				Missiles();
 			} else if (rnd == 1) {
-				BiggerPaddle ();
+				//BiggerPaddle ();
+				Missiles();
 			}
             else if (rnd > 1)
             {
-                BiggerBall();
+                //BiggerBall();
+				//BiggerPaddle();
+				Missiles();
             }
             powerUpText = ("Power Up: " + _whichPowerUp);
             gotPowerUp = true;
@@ -73,5 +78,12 @@ public class PowerUps : MonoBehaviour {
 		PaddleController.Instance.transform.localScale = new Vector3(20f, 10f, 1f);
 		PaddleController.Instance.isBiggerPaddle = true;
 		PaddleController.Instance.ResetPaddle();
+	}
+
+	public void Missiles()
+	{
+		PaddleController.Instance.firingMissiles = true;
+		PaddleController.Instance.ResetMissiles ();
+		Debug.Log ("fire missiles = true");
 	}
 }
