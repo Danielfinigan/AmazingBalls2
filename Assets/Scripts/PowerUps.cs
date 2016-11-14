@@ -27,11 +27,12 @@ public class PowerUps : MonoBehaviour {
 			powerup.Play ();
 
             int rnd = Random.Range(0, 4);
-			if (rnd == 0)
-            {
-				TimeSaver();
+			if (rnd == 0) {
+				TimeSaver ();
+			} else if (rnd == 1) {
+				BiggerPaddle ();
 			}
-            else if (rnd > 0)
+            else if (rnd > 1)
             {
                 BiggerBall();
             }
@@ -66,4 +67,11 @@ public class PowerUps : MonoBehaviour {
         Ball.Instance2.transform.position = spawnposition;
         Ball.Instance2.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10;
     }*/
+	public void BiggerPaddle()
+	{
+		_whichPowerUp = "Bigger Paddle!";
+		PaddleController.Instance.transform.localScale = new Vector3(20f, 10f, 1f);
+		PaddleController.Instance.isBiggerPaddle = true;
+		PaddleController.Instance.ResetPaddle();
+	}
 }
