@@ -70,10 +70,7 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-	public void RestartGame ()
-    {
-        SceneManager.LoadScene("Level1");
-    }
+
 
 	void SetGameState (GameState newGameState) {
 		if (newGameState == GameState.start) {
