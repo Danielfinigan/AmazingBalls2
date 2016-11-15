@@ -41,7 +41,6 @@ public class BrickGenerator : MonoBehaviour {
     {
         int horizontalBricks = 25;
         int veritcalBricks = 8;
-        //y = 2 : 14    x = -40 : 40
         for(int y = 0; y <= veritcalBricks; y += 2)
         {
             if (y < 5)

@@ -27,13 +27,14 @@ public class PowerUps : MonoBehaviour {
 			powerup.Play ();
 
             int rnd = Random.Range(0, 4);
-			if (rnd == 0)
-            {
-				TimeSaver();
+			if (rnd == 0) {
+				TimeSaver ();
+			} else if (rnd < 2) {
+				BiggerPaddle ();
 			}
-            else if (rnd > 0)
+            else 
             {
-                BiggerBall();
+				Missiles();
             }
             powerUpText = ("Power Up: " + _whichPowerUp);
             gotPowerUp = true;
@@ -57,13 +58,18 @@ public class PowerUps : MonoBehaviour {
         GameManager.Instance.timer -= 10;
     }
     
-    //spawns a second ball
-    /*public void AmazingBalls()
-    {
-        _whichPowerUp = "AMAZING BALLS!!";
-        Ball.Instance2.enabled = true;
-        Vector3 spawnposition = new Vector3(Ball.Instance.transform.position.x, Ball.Instance.transform.position.y, 0);
-        Ball.Instance2.transform.position = spawnposition;
-        Ball.Instance2.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10;
-    }*/
+	public void BiggerPaddle()
+	{
+		_whichPowerUp = "Bigger Paddle!";
+		PaddleController.Instance.transform.localScale = new Vector3(20f, 10f, 1f);
+		PaddleController.Instance.isBiggerPaddle = true;
+		PaddleController.Instance.ResetPaddle();
+	}
+
+	public void Missiles()
+	{
+		_whichPowerUp = "Missiles!";
+		PaddleController.Instance.firingMissiles = true;
+		PaddleController.Instance.ResetMissiles ();
+	}
 }
