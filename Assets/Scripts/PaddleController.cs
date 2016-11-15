@@ -10,7 +10,6 @@ public class PaddleController : MonoBehaviour {
 	public Missile miss;
 	public int missileTime;
 
-
 	void Awake () {
 		Instance = this;
 	}
@@ -26,8 +25,9 @@ public class PaddleController : MonoBehaviour {
 	}
 
 	public void fireMissile() {
-		Vector3 missileSpawn = new Vector3 (this.transform.position.x, this.transform.position.y+1, this.transform.position.z);
-		miss = (Missile)Instantiate(miss, missileSpawn, Quaternion.identity); 
+        Missile missileClone;
+        Vector2 missileSpawn = new Vector2(this.transform.position.x, this.transform.position.y + 1);
+        missileClone = (Missile) Instantiate(miss, missileSpawn, Quaternion.identity);
 	}
 
 	public void ResetMissiles()
