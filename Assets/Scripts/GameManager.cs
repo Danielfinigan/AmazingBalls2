@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	public GameState currentGameState = GameState.start;
 
 	public GameObject StartScreen;
+    public GameObject HowToPlayScreen;
     public GameObject InGameScreen;
     public GameObject GameOverScreen;
 	public GameObject YouWonScreen;
@@ -37,6 +38,17 @@ public class GameManager : MonoBehaviour {
         timeStarted = true;
 	}
 
+    public void HowToPlay()
+    {
+        StartScreen.SetActive(false);
+        HowToPlayScreen.SetActive(true);
+    }
+
+    public void BackToMenu()
+    {
+        StartScreen.SetActive(true);
+        HowToPlayScreen.SetActive(false);
+    }
 	public void GameOver() {
 		SetGameState (GameState.gameOver);
         timeStarted = false;
