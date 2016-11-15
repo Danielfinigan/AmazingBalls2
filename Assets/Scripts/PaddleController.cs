@@ -27,14 +27,15 @@ public class PaddleController : MonoBehaviour {
         Missile missileClone;
         Vector2 missileSpawn = new Vector2(this.transform.position.x, this.transform.position.y + 1);
         missileClone = (Missile) Instantiate(miss, missileSpawn, Quaternion.identity);
+        firingMissiles = false;
 	}
 
-	public void ResetMissiles()
+	/*public void ResetMissiles()
 	{
 		StartCoroutine(Resetm());
-	}
+	}*/
 
-	public IEnumerator Resetm()
+	/*public IEnumerator Resetm()
 	{
 		for(int i = 4; i > 0; i--)
 		{
@@ -42,13 +43,13 @@ public class PaddleController : MonoBehaviour {
 			yield return new WaitForSeconds(1f);
 		}
 		firingMissiles = false;
-	}
+	}*/
 
 	public void ResetPaddle()
 	{
-		StartCoroutine(Resetb());
+		StartCoroutine(ResetBiggerPaddle());
 	}
-	public IEnumerator Resetb()
+	public IEnumerator ResetBiggerPaddle()
 	{
 		for(int i = 10; i > 0; i--)
 		{

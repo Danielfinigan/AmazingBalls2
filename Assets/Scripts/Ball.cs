@@ -10,6 +10,8 @@ public class Ball : MonoBehaviour {
     public Rigidbody2D rb;
 	public GameObject pUp;
 
+    public int demo = 0;    //to iterate through power ups for demo purposes
+
     public Ball()
     {
 
@@ -23,6 +25,10 @@ public class Ball : MonoBehaviour {
 		GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
 	}
 
+    public void increaseSpeed()
+    {
+        GetComponent<Rigidbody2D>().velocity *= 1.5f;
+    }
 	float hitFactor(Vector2 ballPos, Vector2 hitPos,
 		float paddlePos) {
 		return (ballPos.x - hitPos.x) / paddlePos;
@@ -51,7 +57,7 @@ public class Ball : MonoBehaviour {
             ballHit.Play();
             BrickGenerator.Instance.DeleteBrick(col);
 
-			int rnd = Random.Range (0, 6);
+			int rnd = Random.Range (0, 5);
             if (rnd == 0 && PowerUps.instance == null) {
 				Vector3 newSpawnPosition = new Vector3 (Ball.Instance.transform.position.x, Ball.Instance.transform.position.y, -8);
 				Instantiate (pUp, newSpawnPosition, Quaternion.identity);
@@ -61,9 +67,9 @@ public class Ball : MonoBehaviour {
 
     public void ResetBall()
     {
-        StartCoroutine(Resetb());
+        StartCoroutine(ResetBiggerBall());
     }
-    public IEnumerator Resetb()
+    public IEnumerator ResetBiggerBall()
     {
         for(int i = 10; i > 0; i--)
         {
@@ -72,7 +78,7 @@ public class Ball : MonoBehaviour {
         }
         this.transform.localScale = new Vector3(10f, 10f, 1f);
         isBiggerBall = false;
-    }
+    }   
 }
 
 

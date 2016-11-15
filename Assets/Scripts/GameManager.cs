@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour {
 
     public float timer;
     public float score;
-    public string seconds;
-    public bool _timeStarted = false;
+    public bool timeStarted = false;
+    public bool speedIncrease = false;
 
 	public void Awake () {
 		Instance = this;
@@ -34,17 +34,17 @@ public class GameManager : MonoBehaviour {
 	public void StartGame() {
 		SetGameState (GameState.inGame);
         Ball.Instance.StartGame();
-        _timeStarted = true;
+        timeStarted = true;
 	}
 
 	public void GameOver() {
 		SetGameState (GameState.gameOver);
-        _timeStarted = false;
+        timeStarted = false;
     }
 
 	public void YouWon() {
 		SetGameState (GameState.youWin);
-        _timeStarted = false;
+        timeStarted = false;
         Destroy(Ball.Instance.gameObject);
 	}
 
@@ -102,10 +102,16 @@ public class GameManager : MonoBehaviour {
     }
     void Update()
     {
-        if (_timeStarted == true)
+        if (timeStarted == true)
         {
             timer += Time.deltaTime;
-            seconds = (timer).ToString("0000");
+            if (timer % 30 == 0 && speedIncrease)
+            {
+                Ball.Instance.increaseSpeed();
+                speedIncrease = false;
+            }
+            if (timer % 30 == 1)
+                speedIncrease = true;
         }
     }
 }

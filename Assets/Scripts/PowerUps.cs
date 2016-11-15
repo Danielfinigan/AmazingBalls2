@@ -9,7 +9,6 @@ public class PowerUps : MonoBehaviour {
     public string powerUpText;
     private string _whichPowerUp = "";
     private IEnumerator coroutine;
-
     void Awake()
     {
         instance = this;
@@ -25,23 +24,26 @@ public class PowerUps : MonoBehaviour {
         {
 			AudioSource powerup = GetComponent<AudioSource> ();
 			powerup.Play ();
-
-            int rnd = Random.Range(0, 5);
+            //int rnd = Random.Range(2, 4);
+            int rnd = Ball.Instance.demo;
+            Debug.Log("Random : " + rnd);
 			if (rnd == 0) {
 				BonusPoints();
-			} else if (rnd < 2) {
+			} else if (rnd < 2 && !PaddleController.Instance.isBiggerPaddle) {
 				BiggerPaddle ();
 			}
-            else if(rnd < 4)
+            else if(rnd < 4 && !Ball.Instance.isBiggerBall)
             {
                 BiggerBall();
             }
             else 
             {
-				Missiles();
+				Missile();
             }
             powerUpText = ("Power Up: " + _whichPowerUp);
             gotPowerUp = true;
+
+            Ball.Instance.demo = (Ball.Instance.demo + 1) % 5;
 
             //Disables the sprite, object is destroyed in KillTrigger.cs
             this.GetComponent<SpriteRenderer>().enabled = false;
@@ -59,7 +61,7 @@ public class PowerUps : MonoBehaviour {
     public void BonusPoints()
     {
         _whichPowerUp = "Bonus Points! +100";
-        GameManager.Instance.score += 10;
+        GameManager.Instance.score += 100;
     }
     
 	public void BiggerPaddle()
@@ -70,10 +72,10 @@ public class PowerUps : MonoBehaviour {
 		PaddleController.Instance.ResetPaddle();
 	}
 
-	public void Missiles()
+	public void Missile()
 	{
-		_whichPowerUp = "Missiles!";
+		_whichPowerUp = "Missile!";
 		PaddleController.Instance.firingMissiles = true;
-		PaddleController.Instance.ResetMissiles ();
+		//PaddleController.Instance.ResetMissiles ();
 	}
 }

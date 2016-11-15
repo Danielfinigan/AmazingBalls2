@@ -10,7 +10,7 @@ public class ViewYouWin : MonoBehaviour {
     {
         if (GameManager.Instance.currentGameState == GameState.youWin)
         {
-            timerLabel.text = ("Score: " + GameManager.Instance.seconds + " seconds");
+            timerLabel.text = ("Score: " + GameManager.Instance.score);
         }
     }
 }

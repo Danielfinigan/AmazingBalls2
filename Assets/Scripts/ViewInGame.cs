@@ -7,6 +7,7 @@ public class ViewInGame : MonoBehaviour {
     public Text timerLabel;
     public Text powerUpLabel;
     public Text biggerBallTimeRemaining;
+    public Text biggerPaddleTimeRemaining;
 
     void Update()
     {
@@ -34,6 +35,15 @@ public class ViewInGame : MonoBehaviour {
         else
         {
             biggerBallTimeRemaining.text = "";
+        }
+
+        if (PaddleController.Instance.isBiggerPaddle)
+        {
+            biggerPaddleTimeRemaining.text = ("Bigger Paddle: " + PaddleController.Instance.biggerPaddleTime.ToString());
+        }
+        else
+        {
+            biggerPaddleTimeRemaining.text = "";
         }
     }
 
