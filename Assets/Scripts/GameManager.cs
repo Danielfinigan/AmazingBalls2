@@ -60,6 +60,11 @@ public class GameManager : MonoBehaviour {
         Destroy(Ball.Instance.gameObject);
 	}
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 	public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
