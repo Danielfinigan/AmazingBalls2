@@ -19,7 +19,6 @@ public class Missile : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		//Spawns a powerUp
 		if ( col.gameObject.tag == "Brick" ) {
 			
 			BrickGenerator.Instance.DeleteBrick(col);

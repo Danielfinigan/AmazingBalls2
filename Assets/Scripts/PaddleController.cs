@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PaddleController : MonoBehaviour {
-	//public float speed = 30;
 	public static PaddleController Instance;
 	public bool isBiggerPaddle;
 	public int biggerPaddleTime;
