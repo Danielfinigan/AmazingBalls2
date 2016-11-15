@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject YouWonScreen;
 
     public float timer;
+    public float score;
     public string seconds;
     public bool _timeStarted = false;
 
@@ -87,6 +88,18 @@ public class GameManager : MonoBehaviour {
 		currentGameState = newGameState;
 	}
 
+    //add points to score based how quickly bricks are destroyed
+    public void Addpoints()
+    {
+        float add = 10;     //default score per brick = 10
+        if (timer < 15)     //under 30 seconds
+            add *= 5;
+        else if (timer < 30)
+            add *= 3;
+        else if (timer < 60)    //under 60 seconds
+            add *= 2;
+        score += add;
+    }
     void Update()
     {
         if (_timeStarted == true)

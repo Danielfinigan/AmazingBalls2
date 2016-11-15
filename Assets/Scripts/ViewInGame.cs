@@ -12,7 +12,7 @@ public class ViewInGame : MonoBehaviour {
     {
         if (GameManager.Instance.currentGameState == GameState.inGame)
         {            
-            timerLabel.text = ("Score: " + GameManager.Instance.seconds);
+            timerLabel.text = ("Score: " + GameManager.Instance.score.ToString("0000"));
         }
 
         //check that power up exists

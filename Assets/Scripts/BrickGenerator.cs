@@ -33,6 +33,7 @@ public class BrickGenerator : MonoBehaviour {
     {
         bricks.Remove(bricks[0]);
         Destroy(brick.gameObject);
+        GameManager.Instance.Addpoints();
         if (bricks.Count == 0)
             GameManager.Instance.YouWon();
     }

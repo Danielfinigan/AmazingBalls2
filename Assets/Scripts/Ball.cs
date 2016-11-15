@@ -51,7 +51,7 @@ public class Ball : MonoBehaviour {
             ballHit.Play();
             BrickGenerator.Instance.DeleteBrick(col);
 
-			int rnd = Random.Range (0, 4);
+			int rnd = Random.Range (0, 6);
             if (rnd == 0 && PowerUps.instance == null) {
 				Vector3 newSpawnPosition = new Vector3 (Ball.Instance.transform.position.x, Ball.Instance.transform.position.y, -8);
 				Instantiate (pUp, newSpawnPosition, Quaternion.identity);

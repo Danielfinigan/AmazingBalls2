@@ -26,12 +26,16 @@ public class PowerUps : MonoBehaviour {
 			AudioSource powerup = GetComponent<AudioSource> ();
 			powerup.Play ();
 
-            int rnd = Random.Range(0, 4);
+            int rnd = Random.Range(0, 5);
 			if (rnd == 0) {
-				TimeSaver ();
+				BonusPoints();
 			} else if (rnd < 2) {
 				BiggerPaddle ();
 			}
+            else if(rnd < 4)
+            {
+                BiggerBall();
+            }
             else 
             {
 				Missiles();
@@ -52,10 +56,10 @@ public class PowerUps : MonoBehaviour {
         Ball.Instance.ResetBall();
     }
 
-    public void TimeSaver()
+    public void BonusPoints()
     {
-        _whichPowerUp = "Time Saver!";
-        GameManager.Instance.timer -= 10;
+        _whichPowerUp = "Bonus Points! +100";
+        GameManager.Instance.score += 10;
     }
     
 	public void BiggerPaddle()
