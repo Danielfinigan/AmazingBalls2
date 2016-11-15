@@ -82,8 +82,8 @@ public class PowerUps : MonoBehaviour {
 
 	public void Missiles()
 	{
+		_whichPowerUp = "Missiles!";
 		PaddleController.Instance.firingMissiles = true;
 		PaddleController.Instance.ResetMissiles ();
-		Debug.Log ("fire missiles = true");
 	}
 }

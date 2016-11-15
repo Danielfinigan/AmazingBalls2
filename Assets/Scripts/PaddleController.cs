@@ -26,7 +26,7 @@ public class PaddleController : MonoBehaviour {
 	}
 
 	public void fireMissile() {
-		Vector3 missileSpawn = new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z);
+		Vector3 missileSpawn = new Vector3 (this.transform.position.x, this.transform.position.y+1, this.transform.position.z);
 		miss = (Missile)Instantiate(miss, missileSpawn, Quaternion.identity); 
 	}
 
@@ -42,7 +42,6 @@ public class PaddleController : MonoBehaviour {
 			missileTime = i;
 			yield return new WaitForSeconds(1f);
 		}
-		//this.transform.localScale = new Vector3(10f, 10f, 1f);
 		firingMissiles = false;
 	}
 
