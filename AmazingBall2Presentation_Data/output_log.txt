@@ -14,14 +14,14 @@ Platform assembly: C:\Users\DanFinigan\Desktop\AmazingBall2\AmazingBall2Presenta
 Loading C:\Users\DanFinigan\Desktop\AmazingBall2\AmazingBall2Presentation_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\DanFinigan\Desktop\AmazingBall2\AmazingBall2Presentation_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\DanFinigan\Desktop\AmazingBall2\AmazingBall2Presentation_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.045 seconds
+- Completed reload, in  0.044 seconds
 Platform assembly: C:\Users\DanFinigan\Desktop\AmazingBall2\AmazingBall2Presentation_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\DanFinigan\Desktop\AmazingBall2\AmazingBall2Presentation_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.630788 ms
+UnloadTime: 0.592300 ms
 Random : 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
@@ -42,16 +42,12 @@ Random : 4
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-Random : 0
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.116029 ms
+UnloadTime: 2.083099 ms
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 459.
-Total: 0.326727 ms (FindLiveObjects: 0.037633 ms CreateObjectMapping: 0.013684 ms MarkObjects: 0.271559 ms  DeleteObjects: 0.003421 ms)
+Total: 0.305344 ms (FindLiveObjects: 0.036350 ms CreateObjectMapping: 0.012401 ms MarkObjects: 0.253170 ms  DeleteObjects: 0.002993 ms)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 3354 -> priority: 1 
-  Thread -> id: 3c44 -> priority: 1 
+  Thread -> id: 465c -> priority: 1 
+  Thread -> id: 2298 -> priority: 1 

@@ -27,5 +27,12 @@ public class Missile : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+        else if(col.gameObject.tag == "Ball")
+        {
+            Destroy(this.gameObject);
+            Ball.Instance.StartGame();
+        }
+
+        
     }
 }

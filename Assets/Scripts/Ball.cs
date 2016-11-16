@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour {
     public Rigidbody2D rb;
 	public GameObject pUp;
 
-    public int demo = 0;    //to iterate through power ups for demo purposes
+    public int demo = 3;    //to iterate through power ups for demo purposes
 
     public Ball()
     {
@@ -27,7 +27,7 @@ public class Ball : MonoBehaviour {
 
     public void increaseSpeed()
     {
-        GetComponent<Rigidbody2D>().velocity *= 1.5f;
+        GetComponent<Rigidbody2D>().velocity *= 2f;
     }
 	float hitFactor(Vector2 ballPos, Vector2 hitPos,
 		float paddlePos) {
